@@ -1,16 +1,17 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export class HelloWorldClass {
-  suffix: string
+  suffix: string;
+
   constructor(suffix: string) {
     this.suffix = suffix;
   }
 
   static getName(): string {
-    return `Hello, ${uuidv4()}`
+    return `Hello, ${uuidv4()}`;
   }
 
   getHello() {
-    return `Hello, ${HelloWorldClass.getName()} - ${this.suffix}`
+    return `Hello, ${HelloWorldClass.getName()} - ${this.suffix}`;
   }
 }
