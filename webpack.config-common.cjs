@@ -25,7 +25,6 @@ const TARGET = process.env.npm_lifecycle_event;
 const PATH_SRC = path.resolve(__dirname, 'src');
 const PATH_DIST = path.resolve(__dirname, 'dist');
 const PATH_NODE_MODULES = path.resolve(__dirname, 'node_modules', '.pnpm');
-const PATH_NPM = [PATH_NODE_MODULES];
 const PATH_NPM_CSS = [
   path.resolve(PATH_NODE_MODULES, 'normalize.css'),
   path.resolve(PATH_NODE_MODULES, 'reset-css'),
@@ -34,7 +33,7 @@ const PATH_NPM_CSS = [
 const PATH_NPM_SASS = [];
 const PATH_CSS = PATH_NPM_CSS.concat(PATH_SRC);
 const PATH_SASS = PATH_NPM_SASS.concat(PATH_SRC);
-const PATH_NPM_FONTS = [path.resolve(PATH_NPM_FONTS, 'typeface-roboto', 'files')];
+const PATH_NPM_FONTS = [path.resolve(PATH_NPM_MODULES, 'typeface-roboto', 'files')];
 const PATH_FONTS = PATH_NPM_FONTS.concat(path.join(PATH_SRC, 'fonts'));
 const PATH_NPM_IMAGES = [];
 const PATH_IMAGES = PATH_NPM_IMAGES.concat(PATH_SRC);
@@ -103,7 +102,7 @@ const ruleWoff = {
       },
     },
   ],
-  include: PATH_NPM,
+  include: [PATH_NODE_MODULES],
 };
 
 const ruleTtf = {
