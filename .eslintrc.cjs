@@ -141,6 +141,9 @@ module.exports = {
     'new-cap': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+     // https://stackoverflow.com/questions/63961803/eslint-says-all-enums-in-typescript-app-are-already-declared-in-the-upper-scope
+     'no-shadow': 'off',
+     '@typescript-eslint/no-shadow': ['error'],
   },
   'globals': {
     '_': true,
