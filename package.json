@@ -38,6 +38,7 @@
     "chai-string": "^1.5.0",
     "clean-webpack-plugin": "^4.0.0",
     "compression-webpack-plugin": "^10.0.0",
+    "error-stack-parser": "^2.1.4",
     "eslint": "^8.24.0",
     "eslint-plugin-async-await": "^0.0.0",
     "eslint-plugin-react": "^7.31.8",
