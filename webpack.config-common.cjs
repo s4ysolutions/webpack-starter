@@ -18,13 +18,14 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const ReactRefreshTypeScript = require('react-refresh-typescript');
 
 const TARGET = process.env.npm_lifecycle_event;
 const PATH_SRC = path.resolve(__dirname, 'src');
 const PATH_DIST = path.resolve(__dirname, 'dist');
-const PATH_NODE_MODULES = path.resolve(__dirname, 'node_modules', '.pnpm');
+const PATH_NODE_MODULES = path.resolve(__dirname, 'node_modules');
+const PATH_NPM = [PATH_NODE_MODULES];
 const PATH_NPM_CSS = [
   path.resolve(PATH_NODE_MODULES, 'normalize.css'),
   path.resolve(PATH_NODE_MODULES, 'reset-css'),
@@ -33,7 +34,7 @@ const PATH_NPM_CSS = [
 const PATH_NPM_SASS = [];
 const PATH_CSS = PATH_NPM_CSS.concat(PATH_SRC);
 const PATH_SASS = PATH_NPM_SASS.concat(PATH_SRC);
-const PATH_NPM_FONTS = [path.resolve(PATH_NPM_MODULES, 'typeface-roboto', 'files')];
+const PATH_NPM_FONTS = [path.resolve(PATH_NODE_MODULES, 'typeface-roboto', 'files')];
 const PATH_FONTS = PATH_NPM_FONTS.concat(path.join(PATH_SRC, 'fonts'));
 const PATH_NPM_IMAGES = [];
 const PATH_IMAGES = PATH_NPM_IMAGES.concat(PATH_SRC);
@@ -52,8 +53,7 @@ const ruleBabelStatic = {
   include: PATH_SRC,
 };
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
-const ruleTypescript = {
+const ruleTypescriptGen = (isDevelopment) => ({
   test: /\.tsx?$/u,
   exclude: /node_modules/u,
   use: [
@@ -69,7 +69,11 @@ const ruleTypescript = {
     },
   ],
   include: PATH_SRC,
-};
+});
+
+const ruleTypescript = ruleTypescriptGen(false)
+
+const ruleTypescriptDev = ruleTypescriptGen( true)
 
 const cssModuleLoader = {
   loader: 'css-loader',
@@ -102,7 +106,7 @@ const ruleWoff = {
       },
     },
   ],
-  include: [PATH_NODE_MODULES],
+  include: PATH_NPM,
 };
 
 const ruleTtf = {
@@ -171,15 +175,14 @@ const config = {
   resolve: {
     modules: [
       'src',
-      PATH_NODE_MODULES,
-      path.join(PATH_NODE_MODULES, 'typeface-roboto', 'files'),
+      'node_modules',
+      path.join('node_modules', 'typeface-roboto', 'files'),
     ],
     extensions: [
       '.js',
-      '.tsx',
-      '.d.ts',
-      '.ts',
       '.jsx',
+      '.ts',
+      '.tsx',
     ],
     plugins: [new TsconfigPathsPlugin({ /* configFile: "./path/to/tsconfig.json" */ })],
     fallback: { 'stream': require.resolve('stream-browserify'), 'buffer': require.resolve('buffer/') }, // required by saz
@@ -208,6 +211,7 @@ module.exports = {
   config,
   ruleBabelStatic,
   ruleTypescript,
+  ruleTypescriptDev,
   cssLoader,
   cssModuleLoader,
   PATH_CSS,

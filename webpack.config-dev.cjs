@@ -20,12 +20,11 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 
 const {
   config: baseConfig,
-  PATH_DIST,
   PATH_CSS,
   PATH_SASS,
   cssLoader,
   cssModuleLoader,
-  ruleTypescript,
+  ruleTypescriptDev,
 } = require('./webpack.config-common.cjs');
 
 const ruleCssEmbed = {
@@ -56,7 +55,7 @@ const config = merge(baseConfig, {
     rules: [
       ruleCssEmbed,
       ruleSassEmbed,
-      ruleTypescript,
+      ruleTypescriptDev,
     ],
   },
   plugins: [
@@ -64,7 +63,6 @@ const config = merge(baseConfig, {
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
     new ReactRefreshWebpackPlugin(),
-    // new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
     //contentBase: path.resolve(__dirname, PATH_DIST),

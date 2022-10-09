@@ -2,7 +2,7 @@
   "packageManager": "pnpm@7.13.2",
   "name": "webpack-starter",
   "version": "1.0.0",
-  "description": "",
+  "description": "pnpm@7.13.2 npm@8.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -39,7 +39,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "compression-webpack-plugin": "^10.0.0",
     "error-stack-parser": "^2.1.4",
-    "eslint": "^8.24.0",
+    "eslint": "^8.25.0",
     "eslint-plugin-async-await": "^0.0.0",
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
