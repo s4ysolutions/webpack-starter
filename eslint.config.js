@@ -8,6 +8,13 @@ export default [
   {
     ignores: ['**/node_modules', 'dist', 'webpack*'],
   },
+  {
+    settings: {
+      react: {
+        version: '18.3.1',
+      },
+    },
+  },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -82,6 +89,7 @@ export default [
       'space-infix-ops': ['warn'],
     },
   },
+  react.configs.flat.recommended,
   {
     files: ['src/**/*.{tsx}', 'tests/**/*.{tsx}'],
     plugins: {react},
