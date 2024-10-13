@@ -1,8 +1,8 @@
 # webpack-starter
 
-## What it contais
+This is a template for my React projects, with carefully configured TypeScript, Mocha, Jest, ES6 modules, ESLint, and editorconfig.
 
-The starter template for all my React front-end repos. 
+## What it contais
 
  - Webpack [configuraiton for typescript](https://github.com/s4ysolutions/webpack-starter/blob/238c84dd753e141c37e98f9d3db92bfe9b3367d1/webpack.config-common.cjs#L56C1-L76C51) translator;
  - Webpack configurations with the [common library](https://github.com/s4ysolutions/webpack-starter/blob/main/webpack.config-common.cjs) and [development](https://github.com/s4ysolutions/webpack-starter/blob/main/webpack.config-dev.cjs) and [production](https://github.com/s4ysolutions/webpack-starter/blob/main/webpack.config-prod.cjs) targets;
