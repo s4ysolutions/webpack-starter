@@ -61,7 +61,7 @@ const ruleTypescriptGen = (isDevelopment) => ({
       loader: 'ts-loader',
       options: {
         getCustomTransformers: () => ({
-          before: [isDevelopment && ReactRefreshTypeScript()].filter(Boolean),
+          before: [isDevelopment && ReactRefreshTypeScript.default()].filter(Boolean),
         }),
         experimentalWatchApi: true,
         transpileOnly: true,
